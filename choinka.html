@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* Podstawowe style */
+      #stats {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 30%;
+        height: 100vh;
+        font-size: 10px;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        text-align: center;
+        z-index: 999;
+      }
+      body {
+        display: flex;
+        overflow-x: hidden;
+        color: white;
+        margin: 0;
+        background: rgb(25, 25, 25);
+        align-items: center;
+        justify-content: flex-start;
+        height: 100vh;
+        flex-direction: column;
+      }
+      #container {
+        background: rgb(25, 25, 25);
+        position: absolute;
+        top: 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100vw;
+        padding: 25px;
+      }
+      button {
+        color: white;
+        font-size: smaller;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        background: rgb(28, 159, 247);
+        border: none;
+        width: 9rem;
+        height: 2rem;
+        border-radius: 50px;
+        transition: all 1s forwards;
+      }
+      button:hover {
+        transition: all 1s forwards;
+        background: none;
+        border: 5px solid rgb(28, 159, 247);
+        color: rgb(28, 159, 247);
+      }
+      #obrazek {
+        background: rgba(0, 0, 0, 0.1);
+        width: 100%;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+      }
+      #btn,
+      #height {
+        z-index: 999;
+      }
+      h1 {
+        font-size: 50px;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      h3 {
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      p {
+        border-bottom: 1px solid rgb(28, 159, 247);
+        padding: 5px;
+        font-size: 20px;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+      }
+      input {
+        height: 2rem;
+        color: white;
+        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+        width: 9rem;
+        border: 1px solid grey;
+        background: none;
+        border-radius: 20px;
+      }
+      input[type="color"] {
+        border: none;
+        border-radius: 0px;
+        height: 40px;
+        width: 40px;
+      }
+      #items {
+        position: absolute;
+        top: 0%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 30vw;
+        height: 50vh;
+        z-index: 999;
+        flex-direction: column;
+      }
+      font {
+        color: rgb(255, 255, 255);
+        font-size: 15px;
+      }
+      #buttons {
+        margin: 2%;
+        background: none;
+        border: 1px solid rgb(28, 159, 247);
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: calc(100vw - 3px);
+        height: 5vh;
+        position: absolute;
+        bottom: 5%;
+      }
+      .item {
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        color: inherit;
+        min-width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        text-align: center;
+        margin: 10px 0;
+      }
+      .item pre {
+        font-size: 1.5em;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      /* Style responsywne */
+      @media (max-width: 768px) {
+        #stats {
+          width: 100%;
+          height: auto;
+          font-size: 12px;
+          position: relative;
+          text-align: center;
+        }
+
+        body {
+          flex-direction: column;
+          height: auto;
+        }
+
+        #container {
+          top: 5%;
+          width: 90vw;
+          padding: 10px;
+        }
+
+        #obrazek {
+          width: 100%;
+          padding: 5px;
+        }
+
+        #items {
+          width: 100%;
+          height: auto;
+          top: 0%;
+        }
+
+        h1 {
+          font-size: 35px;
+        }
+
+        p {
+          font-size: 16px;
+        }
+
+        button {
+          width: 8rem;
+          height: 2.5rem;
+          font-size: 12px;
+        }
+
+        #buttons {
+          flex-direction: column;
+          height: auto;
+          bottom: 0;
+          width: 100vw;
+          justify-content: center;
+          padding: 10px;
+        }
+
+        .item pre {
+          font-size: 1em;
+        }
+      }
+      h3 {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="stats"></div>
+    <div id="items">
+      <h1>Choinka</h1>
+      <h3>*Dla urządzeń mobilnych najlepiej nie przekraczać 25 linijek</h3>
+      <p>wysokość choinki: <input type="number" id="height" /></p>
+      <p>Kolor Choinki: <input type="color" id="color" /></p>
+      <p>
+        Szybkość odświeżania (s):
+        <input type="number" min="0" placeholder="4, 0.5, 100 etc." id="time" />
+      </p>
+      <p>
+        Ilość choinek:
+        <input type="number" min="0" max="12" id="amount" />
+      </p>
+      <p>
+        Typ znaków:
+        <select id="elem">
+          <option value="1">UTF-8(całe)</option>
+          <option value="2">litery</option>
+          <option value="3">cyfry</option>
+        </select>
+      </p>
+    </div>
+    <div id="buttons">
+      <button id="btn" onclick="pokaz()">Generuj</button>
+      <button id="startBtn" onclick="startLosowanie()">Losowa</button>
+      <button id="autoBtn" onclick="interwal()">Automatyczne</button>
+    </div>
+    <div id="container">
+      <div id="obrazek"></div>
+    </div>
+
+    <script>
+      let wynik = document.getElementById("obrazek");
+      let stats = document.getElementById("stats");
+      const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      const numbers = "0123456789";
+
+      let intervalId; // Do przechowywania identyfikatora interwału
+
+      function startLosowanie() {
+        let heightInput = document.getElementById("height");
+        let colorInput = document.getElementById("color");
+        let amountInput = document.getElementById("amount");
+        let elemInput = document.getElementById("elem");
+
+        // Ustawienia domyślne dla losowania
+        heightInput.value = Math.floor(Math.random() * 50) + 1; // Losowa wysokość od 1 do 50
+        colorInput.value = `#${Math.floor(Math.random() * 16777215).toString(
+          16
+        )}`; // Losowy kolor
+        amountInput.value = Math.floor(Math.random() * 5) + 1; // Losowa ilość choinek od 1 do 5
+        elemInput.value = Math.floor(Math.random() * 3) + 1; // Losowy typ znaków
+        pokaz(); // Wywołaj funkcję do generowania choinki
+      }
+
+      function interwal() {
+        // Zatrzymaj poprzedni interwał, jeśli istnieje
+        clearInterval(intervalId);
+
+        let timeInput = document.getElementById("time").value;
+
+        // Sprawdź, czy czas jest poprawny
+        if (timeInput > 0) {
+          // Ustaw nowy interwał
+          intervalId = setInterval(() => {
+            startLosowanie(); // Losuj choinkę w określonym czasie
+          }, timeInput * 1000); // Konwersja na milisekundy
+        } else {
+          alert("Wprowadź prawidłowy czas odświeżania!");
+        }
+      }
+      function pokaz() {
+        let dlugosc = parseInt(document.getElementById("height").value);
+        let color = document.getElementById("color").value;
+        let elem = document.getElementById("elem").value;
+        let amount = parseInt(document.getElementById("amount").value);
+        let generuj = "";
+        let totalBitsUTF8 = 0;
+        let totalBitsUTF16 = 0;
+        let totalCharsWithoutSpaces = 0;
+        let totalSpaces = 0;
+
+        // Clear previous results
+        wynik.innerHTML = "";
+        stats.innerHTML = "";
+
+        if (dlugosc < 140 && amount <= 12) {
+          // Dostosowanie rozmiaru czcionki w zależności od wysokości choinki
+          let fontSize = Math.max(12, 200 / dlugosc); // Ustal minimalny rozmiar czcionki
+
+          for (let m = 0; m < amount; m++) {
+            let itemElem = document.createElement("div");
+            itemElem.classList.add("item");
+            itemElem.style.color = color;
+
+            for (let rowIdx = 0; rowIdx < dlugosc; rowIdx++) {
+              let row = "";
+              for (let charIdx = 0; charIdx <= rowIdx; charIdx++) {
+                let randomChar;
+                if (elem == "2") {
+                  randomChar = chars.charAt(
+                    Math.floor(Math.random() * chars.length)
+                  );
+                  row += randomChar + " ";
+                } else if (elem == "3") {
+                  randomChar = numbers.charAt(
+                    Math.floor(Math.random() * numbers.length)
+                  );
+                  row += randomChar + " ";
+                } else if (elem == "1") {
+                  let randomCodePoint =
+                    Math.floor(Math.random() * (65535 - 32 + 1)) + 32;
+                  randomChar = String.fromCodePoint(randomCodePoint);
+                  row += randomChar;
+                }
+
+                let codePoint = randomChar.codePointAt(0);
+                totalCharsWithoutSpaces++;
+
+                if (codePoint <= 0x7f) {
+                  totalBitsUTF8 += 8;
+                } else if (codePoint <= 0x7ff) {
+                  totalBitsUTF8 += 16;
+                } else if (codePoint <= 0xffff) {
+                  totalBitsUTF8 += 24;
+                } else {
+                  totalBitsUTF8 += 32;
+                }
+
+                if (codePoint <= 0xffff) {
+                  totalBitsUTF16 += 16;
+                } else {
+                  totalBitsUTF16 += 32;
+                }
+              }
+              totalSpaces += rowIdx;
+
+              generuj += row + "<br>";
+            }
+
+            itemElem.innerHTML += `<pre style="font-size: ${fontSize}px;">${generuj}</pre>`;
+            wynik.appendChild(itemElem);
+            generuj = ""; // Reset generuj po dodaniu choinki
+          }
+
+          document.getElementById("items").style.display = "none";
+          document.getElementById("buttons").style.display = "none";
+
+          let totalChars = 0;
+          for (let rowIdx = 0; rowIdx < dlugosc; rowIdx++) {
+            totalChars += rowIdx + 1;
+          }
+          stats.innerHTML += `Oto choinka z ${dlugosc} linijkami i ${totalChars} znakami`;
+          stats.innerHTML += `<font>UTF-8: ${totalBitsUTF8} bitów (ze spacjami)</font><br>`;
+          stats.innerHTML += `<font>UTF-8: ${
+            totalBitsUTF8 - totalSpaces * 8
+          } bitów (bez spacji)</font><br>`;
+        } else {
+          stats.innerHTML =
+            "Układ jest zbyt duży lub liczba choinek jest większa niż 12. Wprowadź mniejszą liczbę.";
+        }
+      }
+    </script>
+  </body>
+</html>
