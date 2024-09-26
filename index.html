@@ -223,7 +223,7 @@
     <div id="items">
       <h1>Choinka</h1>
       <h3>*Dla urządzeń mobilnych najlepiej nie przekraczać 25 linijek</h3>
-      <p>wysokość choinki: <input type="number" id="height" /></p>
+      <p>wysokość choinki: <input type="number" id="height" placeholder="max 70" /></p>
       <p>Kolor Choinki: <input type="color" id="color" /></p>
       <p>
         Szybkość odświeżania (s):
@@ -306,7 +306,7 @@
         wynik.innerHTML = "";
         stats.innerHTML = "";
 
-        if (dlugosc < 140 && amount <= 12) {
+        if (dlugosc < 70 && amount <= 12) {
           // Dostosowanie rozmiaru czcionki w zależności od wysokości choinki
           let fontSize = Math.max(12, 200 / dlugosc); // Ustal minimalny rozmiar czcionki
 
@@ -379,7 +379,7 @@
           } bitów (bez spacji)</font><br>`;
         } else {
           stats.innerHTML =
-            "Układ jest zbyt duży lub liczba choinek jest większa niż 12. Wprowadź mniejszą liczbę.";
+            "Układ jest zbyt duży(70>) lub liczba choinek jest większa niż 12. Wprowadź mniejszą liczbę.";
         }
       }
     </script>
